@@ -4,6 +4,10 @@ import { ActividadService } from '../services/actividad.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Elemento } from '../model/elemento';
 import { ElementoService } from '../services/elemento.service';
+import { OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { DatabaseService } from '../services/database.service';
 import Swal from 'sweetalert2';
 
 
@@ -25,21 +29,23 @@ export class EditarActividadComponent {
 
   constructor(
     private actividadServicio: ActividadService,
-    private elementoServicio: ElementoService,      
-    private enrutador: Router,    
-    private ruta: ActivatedRoute){}
+    private elementoServicio: ElementoService,
+    private enrutador: Router,
+    private ruta: ActivatedRoute,
+    private db: DatabaseService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
 
     this.obtenerActividad();
-  
+    await this.db.initDatabase();
+
   }
 
   onSubmit() {
 
     this.calcular();
     this.guardarActividad();
-    
+
   }
 
 
@@ -50,7 +56,7 @@ export class EditarActividadComponent {
       next: (datos) => (this.actividad = datos),
       error: (errores: any) => console.log(errores),
     });
-    
+
   }
 
   calcular() {
@@ -64,21 +70,22 @@ export class EditarActividadComponent {
     for (let elemento of this.actividad.elementos) {
       // Calcular precio total de cada elemento
       elemento.precioTotal = elemento.cantidad * elemento.precioUnitario;
-      
+
       // Acumular suma total
       sumaPrecioTotal += elemento.precioTotal;
     }
 
     // Actualizar totales de la actividad
-    this.actividad.precioTotal = sumaPrecioTotal;
+
     this.actividad.precioUnitario = this.actividad.precioTotal / this.actividad.cantidad;
+    this.actividad.precioTotal = sumaPrecioTotal;
 
     console.log('Cálculos actualizados:', {
       elementosTotales: this.actividad.elementos.map(e => e.precioTotal),
       actividadTotal: this.actividad.precioTotal,
       precioUnitario: this.actividad.precioUnitario
     });
-}
+  }
 
   guardarActividad() {
     this.actividadServicio.editarActividad(this.idActividad, this.actividad).subscribe(
@@ -89,7 +96,21 @@ export class EditarActividadComponent {
     );
   }
 
-  irActividadLista(){
+  irActividadLista() {
     this.enrutador.navigate(['/actividad-detalle', this.idActividad]);
+  }
+
+
+
+
+  async addTodo() {
+    if (this.newTodoTitle.trim()) {
+      await this.db.addTodo(this.newTodoTitle);
+      this.newTodoTitle = '';
+    }
+  }
+
+  async toggleTodo(id: string) {
+    await this.db.toggleTodo(id);
   }
 }

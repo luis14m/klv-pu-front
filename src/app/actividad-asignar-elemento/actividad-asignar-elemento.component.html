@@ -46,26 +46,27 @@
   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </table >
 -->
+<div class="container text-end" style="margin: 10px">
+  <input type="text" [(ngModel)]="searchTerm" placeholder="Buscar..." />
+</div>
 <table class="table table-hover align-middle">
   <thead class="table-secondary">
     <tr>
-      <th scope="col">#</th>
+      
       <th scope="col">Codigo</th>
       <th scope="col">Nombre</th>
       <th scope="col">Unidad</th>
-      <th scope="col">Cantidad</th>
+    
       <th scope="col">Precio Unitario</th>
       <th scope="col">Acciones</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let elemento of elementos">
-      <td>{{ elemento.idElemento }}</td>
+    <tr *ngFor="let elemento of filteredData()">
       <td>{{ elemento.codigo }}</td>
-      <td>{{ elemento.nombre }}</td>
+      <th>{{ elemento.nombre }}</th>
       <td>{{ elemento.unidad }}</td>
-      <td>{{ elemento.cantidad }}</td>
-      <td>{{ elemento.precioUnitario }}</td>
+      <th>{{ elemento.precioUnitario }}</th>
       <td>
         <button (click)="asignarElemento(actividad.idActividad,elemento.idElemento)">Asignar</button>
       </td>

@@ -23,7 +23,7 @@ const routes: Routes = [
   {path:'agregar-elemento', component: ElementoAgregarComponent},
   {path:'editar-elemento/:id', component: ElementoEditarComponent},
   //{path:'asignar-elemento/:id', component: ActividadAsignarElementoComponent},
-  {path:'itemizado', component: ActividadesComponent}
+  {path:'resumen', component: ActividadesComponent}
   
 ]
 

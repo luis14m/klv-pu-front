@@ -1,12 +1,13 @@
+
 .logo {
-  height: 40px;
-  width: auto;
-  margin: 10px;
-  display: block;
+  max-width: 300px;
+  height: auto;
+  display: auto;
+  margin: 0 auto;
 }
 
-header {
-  background-color: #fff;
-  padding: 5px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+@media (max-width: 768px) {
+  .logo {
+    max-width: 200px;
+  }
 }
