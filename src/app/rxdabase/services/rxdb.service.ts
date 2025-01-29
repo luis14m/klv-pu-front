@@ -20,7 +20,7 @@ addRxPlugin(RxDBEncryptionPlugin);
 @Injectable({
   providedIn: 'root',
 })
-export class RxdbService {
+export class RxDBService {
   private dbPromise: Promise<RxDatabase>;
 
   constructor() {
@@ -30,7 +30,8 @@ export class RxdbService {
   private async createDatabase(): Promise<RxDatabase> {
     const db = await createRxDatabase({
       name: 'actividades_db',
-      storage: getRxStorageDexie(),
+      //storage: getRxStorageDexie(),
+      version: 1,
       multiInstance: true,
     });
 
@@ -46,4 +47,5 @@ export class RxdbService {
   async getDatabase(): Promise<RxDatabase> {
     return this.dbPromise;
   }
+
 }

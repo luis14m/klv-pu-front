@@ -9,7 +9,7 @@ import * as XLSX from 'xlsx';
   providedIn: 'root',
 })
 export class ActividadService {
-  private urlBase = 'http://localhost:8080/analisispu/actividades';
+  private urlBase = 'http://localhost:8080/apu/actividades';
 
   constructor(private clienteHttp: HttpClient) {}
 

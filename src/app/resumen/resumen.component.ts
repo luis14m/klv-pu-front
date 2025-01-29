@@ -11,7 +11,7 @@ import * as XLSX from 'xlsx';
   standalone: false,
   templateUrl: './resumen.component.html',
 })
-export class ActividadesComponent {
+export class ResumenComponent {
   actividades: Actividad[] = [];
 
   elemento: Elemento;

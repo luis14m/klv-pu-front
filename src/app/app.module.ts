@@ -1,4 +1,4 @@
-import {HttpClientModule, provideHttpClient, withFetch} from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import {
   BrowserModule,
@@ -10,13 +10,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {
   ActividadListaComponent,
-  ThousandsPipe,
 } from './actividad-lista/actividad-lista.component';
 
 import { FormsModule } from '@angular/forms';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
-import { EditarActividadComponent } from './actividad-editar/actividad-editar.component';
+import { ActividadEditarComponent } from './actividad-editar/actividad-editar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -30,28 +29,30 @@ import { importProvidersFrom } from '@angular/core';
 import { ElementoAgregarComponent } from './elemento-agregar/elemento-agregar.component';
 import { ElementoEditarComponent } from './elemento-editar/elemento-editar.component';
 import { ActividadDetalleComponent } from './actividad-detalle/actividad-detalle.component';
-import { ActividadesComponent } from './resumen/resumen.component';
+import { ResumenComponent } from './resumen/resumen.component';
 
 import { ActividadAsignarElementoComponent } from './actividad-asignar-elemento/actividad-asignar-elemento.component';
+import { ApuEditarComponent } from './apu-editar/apu-editar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ActividadAsignarElementoComponent,
-    ActividadesComponent,
+    ResumenComponent,
     ActividadListaComponent,
     ActividadAgregarComponent,
-    EditarActividadComponent,
+    ActividadEditarComponent,
     ActividadDetalleComponent,
 
     ElementosListaComponent,
     ElementoAgregarComponent,
     ElementoEditarComponent,
-    
+    ApuEditarComponent,
+
   ],
 
   imports: [
-    
+
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -60,7 +61,7 @@ import { ActividadAsignarElementoComponent } from './actividad-asignar-elemento/
     MatIconModule,
     MatButtonModule,
     NgxDatatableModule,
-    ThousandsPipe,
+   
   ],
   providers: [
     provideClientHydration(withEventReplay()),
@@ -70,4 +71,4 @@ import { ActividadAsignarElementoComponent } from './actividad-asignar-elemento/
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

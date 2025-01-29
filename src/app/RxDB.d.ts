@@ -1,5 +1,5 @@
 import { RxCollection, RxDatabase, RxDocument } from "rxdb";
-import { RxActividadDocumentType } from "./db/schemas/actividad.schema";
+import { RxActividadDocumentType } from "rxdabase/schemas/actividad.schema";
 
 export type RxActividadDocument = RxDocument<RxActividadDocumentType, {}>;
 export type RxActividadCollection = RxCollection<RxActividadDocumentType, {}, {}>;

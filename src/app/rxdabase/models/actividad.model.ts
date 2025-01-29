@@ -9,7 +9,7 @@ export class ActividadModel {
     this.db = db;
     this.collection = this.db.myActividad;
   }
-
+/* 
   async getActividad(id: string) {
     return await this.collection.findOne(id).exec();
   }
@@ -27,4 +27,7 @@ export class ActividadModel {
   async getAllActividades() {
     return await this.collection.find().exec();
   }
+ */
+   
+
 }
