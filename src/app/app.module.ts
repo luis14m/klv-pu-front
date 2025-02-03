@@ -1,4 +1,4 @@
-import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import {
   BrowserModule,
@@ -10,29 +10,29 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {
   ActividadListaComponent,
-} from './actividad-lista/actividad-lista.component';
+} from './components/actividad-lista/actividad-lista.component';
 
 import { FormsModule } from '@angular/forms';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
-import { ActividadEditarComponent } from './actividad-editar/actividad-editar.component';
+import { ActividadEditarComponent } from './components/actividad-editar/actividad-editar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
-import ActividadAgregarComponent from './actividad-agregar/actividad-agregar.component';
-import { ElementosListaComponent } from './elementos-lista/elementos-lista.component';
+import ActividadAgregarComponent from './components/actividad-agregar/actividad-agregar.component';
+import { ElementosListaComponent } from './components/elementos-lista/elementos-lista.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 import { importProvidersFrom } from '@angular/core';
-import { ElementoAgregarComponent } from './elemento-agregar/elemento-agregar.component';
-import { ElementoEditarComponent } from './elemento-editar/elemento-editar.component';
-import { ActividadDetalleComponent } from './actividad-detalle/actividad-detalle.component';
-import { ResumenComponent } from './resumen/resumen.component';
+import { ElementoAgregarComponent } from './components/elemento-agregar/elemento-agregar.component';
+import { ElementoEditarComponent } from './components/elemento-editar/elemento-editar.component';
+import { ActividadDetalleComponent } from './components/actividad-detalle/actividad-detalle.component';
+import { ResumenComponent } from './components/resumen/resumen.component';
 
-import { ActividadAsignarElementoComponent } from './actividad-asignar-elemento/actividad-asignar-elemento.component';
-import { ApuEditarComponent } from './apu-editar/apu-editar.component';
+import { ActividadAsignarElementoComponent } from './components/actividad-asignar-elemento/actividad-asignar-elemento.component';
+import { ApuEditarComponent } from './components/apu-editar/apu-editar.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +55,7 @@ import { ApuEditarComponent } from './apu-editar/apu-editar.component';
 
     BrowserModule,
     BrowserAnimationsModule,
-    HttpClientModule,
+    // HttpClient should not be here
     AppRoutingModule,
     FormsModule,
     MatIconModule,
@@ -65,6 +65,7 @@ import { ApuEditarComponent } from './apu-editar/apu-editar.component';
   ],
   providers: [
     provideClientHydration(withEventReplay()),
+    HttpClient,
     provideAnimationsAsync(),
     provideHttpClient(withFetch()),
     importProvidersFrom(ActividadListaComponent),

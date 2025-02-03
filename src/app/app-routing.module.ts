@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ActividadListaComponent } from './actividad-lista/actividad-lista.component';
-import { ElementosListaComponent } from './elementos-lista/elementos-lista.component';
-import { ActividadEditarComponent } from './actividad-editar/actividad-editar.component';
-import ActividadAgregarComponent from './actividad-agregar/actividad-agregar.component';
+import { ActividadListaComponent } from './components/actividad-lista/actividad-lista.component';
+import { ElementosListaComponent } from './components/elementos-lista/elementos-lista.component';
+import { ActividadEditarComponent } from './components/actividad-editar/actividad-editar.component';
+import ActividadAgregarComponent from './components/actividad-agregar/actividad-agregar.component';
 
-import { ElementoAgregarComponent } from './elemento-agregar/elemento-agregar.component';
-import { ElementoEditarComponent } from './elemento-editar/elemento-editar.component';
-import { ActividadDetalleComponent } from './actividad-detalle/actividad-detalle.component';
-import { ResumenComponent } from './resumen/resumen.component';
-import { ActividadAsignarElementoComponent } from './actividad-asignar-elemento/actividad-asignar-elemento.component';
+import { ElementoAgregarComponent } from './components/elemento-agregar/elemento-agregar.component';
+import { ElementoEditarComponent } from './components/elemento-editar/elemento-editar.component';
+import { ActividadDetalleComponent } from './components/actividad-detalle/actividad-detalle.component';
+import { ResumenComponent } from './components/resumen/resumen.component';
+import { ActividadAsignarElementoComponent } from './components/actividad-asignar-elemento/actividad-asignar-elemento.component';
+import { ApuEditarComponent } from './components/apu-editar/apu-editar.component';
 
 // http://localhost:4200/actividades
 const routes: Routes = [
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path:'agregar-elemento', component: ElementoAgregarComponent},
   {path:'editar-elemento/:id', component: ElementoEditarComponent},
   //{path:'asignar-elemento/:id', component: ActividadAsignarElementoComponent},
-  {path:'resumen', component: ResumenComponent}
+  {path:'resumen', component: ResumenComponent},
+  {path:'apu-editar/:id', component: ApuEditarComponent},
   
 ]
 

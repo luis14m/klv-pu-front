@@ -1,22 +1,22 @@
-import { ExtractDocumentTypeFromTypedRxJsonSchema, RxJsonSchema, toTypedRxJsonSchema } from 'rxdb';
-import { RxActividadDocument } from '../../RxDB';
+import { elementoSchema } from "./elemento.schema";
 
-export const ACTIVIDAD_SCHEMA = {
-  title: 'actividad schema',
-  primaryKey: 'idActividad',
-  type: 'object',
+export const actividadSchema = {
+  title: 'Actividad Schema',
   version: 0,
+  description: 'Schema for Elemento model',
+  primaryKey: 'id',
+  type: 'object',
   properties: {
-    idActividad: {
-      type: 'number',
+    id: {
+      type: 'string'
     },
     codigo: {
       type: 'string',
-      maxLength: 100
+      unique: true,
     },
     nombre: {
       type: 'string',
-      maxLength: 255
+      maxLength: 25
     },
     unidad: {
       type: 'string',
@@ -33,12 +33,7 @@ export const ACTIVIDAD_SCHEMA = {
     },
     elementos: {
       type: 'array',
-      items: {
-        type: 'object',
-        properties: {
-          // Define Elemento properties here
-        }
-      }
+      items: elementoSchema // Referencia al esquema de Elemento
     },
     createdAt: {
       type: 'string',
@@ -49,9 +44,6 @@ export const ACTIVIDAD_SCHEMA = {
       format: 'date-time'
     }
   },
-  required: ['idActividad', 'codigo', 'nombre', 'unidad', 'cantidad', 'precioUnitario', 'createdAt'],
-  indexes: ['codigo']
+  required: ['id', 'codigo', 'nombre', 'unidad', 'precioUnitario', 'createdAt'],
+  indexes: ['codigo', 'nombre', 'createdAt', 'updatedAt']
 };
-
-const schemaTyped = toTypedRxJsonSchema(ACTIVIDAD_SCHEMA);
-export type RxActividadDocumentType = ExtractDocumentTypeFromTypedRxJsonSchema<typeof schemaTyped>;
